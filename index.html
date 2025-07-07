@@ -39,13 +39,15 @@ html, body {
   width: 100%;
   height: 100%;
   background: url('Picsart_25-07-06_12-49-05-878.jpg') no-repeat center center;
-  background-size: contain;
+  background-size: 150%;
   animation: moveBG 60s linear infinite;
   z-index: -1;
   opacity: 1;
 }
 
 @keyframes moveBG {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-30px, -20px); }
   0%   { transform: translate(0, 0); }
   100% { transform: translate(-20px, -20px); }
 }
@@ -98,6 +100,29 @@ video {
 }
 
 #username {
+  font-size: 36px;
+  margin-top: 30px;
+  color: white;
+  text-shadow: 0 0 10px white, 0 0 20px #ccc;
+  animation: float 3s ease-in-out infinite alternate;
+  margin-bottom: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  will-change: transform;
+  z-index: 5;
+}
+  font-size: 36px;
+  margin-top: 30px;
+  color: white;
+  text-shadow: 0 0 10px white, 0 0 20px #ccc;
+  animation: float 3s ease-in-out infinite alternate;
+  margin-bottom: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  z-index: 5;
+}
   font-size: 36px;
   margin-top: 30px;
   color: white;
@@ -176,7 +201,7 @@ footer a {
     <img src="Picsart_25-07-06_12-49-19-291.png" alt="avatar">
   </div>
 
-  <div id="username">weuory</div>
+  <div id="username" onclick="startSite()">> weuory <</div>
 
   <div class="social-box">
     <a href="https://www.faceit.com/en/players/weuory" target="_blank">⊹ FACEIT</a>
@@ -194,7 +219,13 @@ footer a {
 function startSite() {
   document.getElementById('start-screen').style.display = 'none';
   document.getElementById('video-section').style.display = 'flex';
-  document.getElementById('mainVideo').play();
+  const video = document.getElementById('mainVideo');
+video.play().then(() => {
+  console.log("🎬 Видео воспроизводится");
+}).catch((err) => {
+  console.error("⚠️ Ошибка воспроизведения:", err);
+});
+
 }
 </script>
 
