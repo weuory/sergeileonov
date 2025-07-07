@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>ТЫК</title>
-<script crossorigin="anonymous" src="https://kit.fontawesome.com/b617dc6679.js"></script>
+<script src="https://kit.fontawesome.com/b617dc6679.js" crossorigin="anonymous"></script>
 <style>
 html, body {
   margin: 0;
@@ -16,20 +15,19 @@ html, body {
   overflow: hidden;
 }
 
+/* Движущийся фон на начальном экране */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0;
-  width: 200%;
-  height: 200%;
+  width: 200%; height: 200%;
   background: url('Picsart_25-07-06_12-49-05-878.jpg') repeat;
   background-size: cover;
   animation: moveBG 60s linear infinite;
   z-index: -1;
 }
-
 @keyframes moveBG {
-  0% { transform: translate(0, 0); }
+  0%   { transform: translate(0, 0); }
   100% { transform: translate(-100px, -100px); }
 }
 
@@ -41,17 +39,15 @@ body::before {
   cursor: pointer;
   z-index: 10;
 }
-
 #start-screen h1 {
   font-size: 64px;
   color: white;
   text-shadow: 0 0 10px white, 0 0 30px #ccc;
   animation: flicker 1.5s infinite alternate;
 }
-
 @keyframes flicker {
-  0% { opacity: 0.8; text-shadow: 0 0 8px white; }
-  50% { opacity: 0.9; }
+  0%   { opacity: 0.8; text-shadow: 0 0 8px white; }
+  50%  { opacity: 0.9; }
   100% { opacity: 1; text-shadow: 0 0 16px white, 0 0 30px #ccc; }
 }
 
@@ -64,7 +60,6 @@ body::before {
   height: 100%;
   position: relative;
 }
-
 video {
   position: absolute;
   top: 0; left: 0;
@@ -78,11 +73,10 @@ video {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-color: white;
   margin-bottom: 16px;
   overflow: hidden;
+  box-shadow: 0 0 12px white;
 }
-
 #avatar img {
   width: 100%;
   height: 100%;
@@ -98,41 +92,37 @@ video {
   animation: float 3s ease-in-out infinite alternate;
   margin-bottom: 16px;
 }
-
 @keyframes float {
-  0% { transform: translateY(0); }
+  0%   { transform: translateY(0); }
   100% { transform: translateY(10px); }
 }
 
 .social-box {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  margin-top: 50px;
+  margin-bottom: 30px;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 0 6px white, 0 0 12px #ccc;
+  max-width: 280px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 50px;
-  margin-bottom: 30px;
   align-items: center;
-  max-width: 280px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  box-shadow: 0 0 6px white, 0 0 12px #ccc;
 }
-
 .social-box a {
+  font-size: 18px;
   color: white;
   text-decoration: none;
-  font-size: 18px;
   padding: 6px 14px;
   border-radius: 8px;
   background: rgba(255,255,255,0.1);
   transition: background 0.3s ease;
 }
-
 .social-box a i {
   margin-right: 8px;
 }
-
 .social-box a:hover {
   background: rgba(255,255,255,0.2);
 }
@@ -147,7 +137,6 @@ footer {
   font-weight: bold;
   text-shadow: 0 0 8px white, 0 0 14px #ccc;
 }
-
 footer a {
   text-decoration: none;
   color: #B497FF;
@@ -155,27 +144,34 @@ footer a {
 </style>
 </head>
 <body>
+
 <div id="start-screen" onclick="startSite()">
   <h1>ТЫК</h1>
 </div>
+
 <div id="video-section">
-  <video autoplay="" id="mainVideo">
-    <source src="lv_0_20250706151148.mp4" type="video/mp4"/>
+  <video autoplay muted id="mainVideo">
+    <source src="lv_0_20250706151148.mp4" type="video/mp4">
   </video>
+
   <div id="avatar">
-    <img alt="avatar" src="Picsart_25-07-06_12-49-19-291.png" style="box-shadow: 0 0 12px white;"/>
+    <img src="Picsart_25-07-06_12-49-19-291.png" alt="avatar">
   </div>
+
   <div id="username">weuory</div>
+
   <div class="social-box">
     <a href="https://www.faceit.com/en/players/weuory" target="_blank">⊹ FACEIT</a>
     <a href="https://discord.com/users/weuory" target="_blank"><i class="fab fa-discord"></i> Discord</a>
     <a href="https://steamcommunity.com/id/weuory" target="_blank"><i class="fab fa-steam"></i> Steam</a>
     <a href="https://vk.com/weuory" target="_blank"><i class="fab fa-vk"></i> VK</a>
   </div>
+
   <footer>
     © 2025 Все права защищены — Создатель 🖤 <a href="https://vk.com/sergeileonov" target="_blank">sergeileonov</a>
   </footer>
 </div>
+
 <script>
 function startSite() {
   document.getElementById('start-screen').style.display = 'none';
@@ -183,5 +179,6 @@ function startSite() {
   document.getElementById('mainVideo').play();
 }
 </script>
+
 </body>
 </html>
