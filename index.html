@@ -7,13 +7,11 @@
 <script src="https://kit.fontawesome.com/b617dc6679.js" crossorigin="anonymous"></script>
 <style>
 * {
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-}
+ outline: none; -webkit-tap-highlight-color: transparent; }
 html, body {
   margin: 0;
   padding: 0;
@@ -23,52 +21,33 @@ html, body {
   overflow: hidden;
 }
 
-#loader-screen, #start-screen {
+#start-screen {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#start-screen::before {
+  content: "";
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: black;
-  transition: opacity 1s ease;
-  z-index: 100;
-}
-
-#loader-screen h2 {
-  color: white;
-  font-size: 36px;
-  text-shadow: 0 0 8px white, 0 0 16px #ccc;
-  animation: flicker 1.2s infinite alternate;
-}
-
-@keyframes flicker {
-  0%   { opacity: 0.6; text-shadow: 0 0 6px white; }
-  50%  { opacity: 0.8; }
-  100% { opacity: 1; text-shadow: 0 0 12px white, 0 0 24px #ccc; }
-}
-
-#start-screen {
-  cursor: pointer;
-  opacity: 0;
-  z-index: 99;
-}
-
-#start-screen.show {
-  opacity: 1;
-  transition: opacity 1s ease;
-}
-
-#start-screen {
-  background: url('Picsart_25-07-06_12-49-05-878.jpg') center center no-repeat;
+  background: url('Picsart_25-07-06_12-49-05-878.jpg') no-repeat center center;
   background-size: contain;
   animation: moveBG 60s linear infinite;
+  z-index: -1;
+  opacity: 1;
 }
 
 @keyframes moveBG {
-  0%   { background-position: 0 0; }
-  100% { background-position: -100px -100px; }
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-20px, -20px); }
 }
 
 #start-screen h1 {
@@ -76,6 +55,11 @@ html, body {
   color: white;
   text-shadow: 0 0 10px white, 0 0 30px #ccc;
   animation: flicker 1.5s infinite alternate;
+}
+@keyframes flicker {
+  0%   { opacity: 0.8; text-shadow: 0 0 8px white; }
+  50%  { opacity: 0.9; }
+  100% { opacity: 1; text-shadow: 0 0 16px white, 0 0 30px #ccc; }
 }
 
 #video-section {
@@ -179,10 +163,6 @@ footer a {
 </head>
 <body>
 
-<div id="loader-screen">
-  <h2>Загрузка...</h2>
-</div>
-
 <div id="start-screen" onclick="startSite()">
   <h1>ТЫК</h1>
 </div>
@@ -211,19 +191,6 @@ footer a {
 </div>
 
 <script>
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader-screen");
-  const start = document.getElementById("start-screen");
-
-  setTimeout(() => {
-    loader.style.opacity = "0";
-    setTimeout(() => {
-      loader.style.display = "none";
-      start.classList.add("show");
-    }, 1000);
-  }, 2000); // 2 секунды задержка перед ТЫК
-});
-
 function startSite() {
   document.getElementById('start-screen').style.display = 'none';
   document.getElementById('video-section').style.display = 'flex';
