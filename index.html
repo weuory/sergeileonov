@@ -24,16 +24,6 @@ html, body {
 }
 
 #loader-screen, #start-screen {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: url('Picsart_25-07-06_12-49-05-878.jpg') center center no-repeat;
-  background-size: cover;
-  animation: floatBG 40s ease-in-out infinite alternate;
-}
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -60,16 +50,6 @@ html, body {
 }
 
 #start-screen {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: url('Picsart_25-07-06_12-49-05-878.jpg') center center no-repeat;
-  background-size: cover;
-  animation: floatBG 40s ease-in-out infinite alternate;
-}
   cursor: pointer;
   opacity: 0;
   z-index: 99;
@@ -81,16 +61,6 @@ html, body {
 }
 
 #start-screen {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: url('Picsart_25-07-06_12-49-05-878.jpg') center center no-repeat;
-  background-size: cover;
-  animation: floatBG 40s ease-in-out infinite alternate;
-}
   background: url('Picsart_25-07-06_12-49-05-878.jpg') center center no-repeat;
   background-size: contain;
   animation: moveBG 60s linear infinite;
@@ -205,10 +175,6 @@ footer a {
   text-decoration: none;
   color: #B497FF;
 }
-@keyframes floatBG {
-  0% { background-position: center center; }
-  100% { background-position: 51% 49%; }
-}
 </style>
 </head>
 <body>
@@ -222,7 +188,7 @@ footer a {
 </div>
 
 <div id="video-section">
-  <video autoplay playsinline id="mainVideo">
+  <video autoplay muted id="mainVideo">
     <source src="lv_0_20250706151148.mp4" type="video/mp4">
   </video>
 
@@ -245,23 +211,6 @@ footer a {
 </div>
 
 <script>
-const backgroundImage = new Image();
-backgroundImage.src = "Picsart_25-07-06_12-49-05-878.jpg";
-
-backgroundImage.onload = function () {
-  const loader = document.getElementById("loader-screen");
-  const start = document.getElementById("start-screen");
-
-  setTimeout(() => {
-    loader.style.opacity = "0";
-    setTimeout(() => {
-      loader.style.display = "none";
-      start.classList.add("show");
-    }, 1000);
-  }, 500); // 500ms после полной загрузки
-};
-
-
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader-screen");
   const start = document.getElementById("start-screen");
