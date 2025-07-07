@@ -192,7 +192,7 @@ window.addEventListener("load", () => {
   const checkAll = () => {
     loaded++;
     if (loaded === assets.length) {
-      document.getElementById('loader').style.display = 'none';
+      const loader = document.getElementById('loader'); loader.remove();
       document.getElementById('start-screen').style.display = 'flex';
     }
   };
@@ -211,7 +211,29 @@ window.addEventListener("load", () => {
   });
 });
 
+let isPlaying = false;
 function startSite() {
+  const startScreen = document.getElementById('start-screen');
+  const videoSection = document.getElementById('video-section');
+  const video = document.getElementById('mainVideo');
+
+  if (isPlaying) {
+    video.pause();
+    video.currentTime = 0;
+    videoSection.style.display = 'none';
+    startScreen.style.display = 'flex';
+    isPlaying = false;
+    console.log("⏹️ Остановлено");
+  } else {
+    startScreen.style.display = 'none';
+    videoSection.style.display = 'flex';
+    video.play().then(() => {
+      console.log("▶️ Воспроизведение");
+    }).catch((err) => {
+      console.error("⚠️ Ошибка воспроизведения:", err);
+    });
+    isPlaying = true;
+  }
   document.getElementById('start-screen').style.display = 'none';
   document.getElementById('video-section').style.display = 'flex';
   const video = document.getElementById('mainVideo');
