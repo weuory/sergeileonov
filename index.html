@@ -36,13 +36,14 @@ html, body {
   100% { opacity: 1; text-shadow: 0 0 14px white, 0 0 26px #ccc; }
 }
 #start-screen {
+  opacity: 0.6;
   display: none;
   justify-content: center;
   align-items: center;
   height: 100%;
   background: url('Picsart_25-07-06_12-49-05-878.jpg') center center no-repeat;
-  background-size: 150%;
-  animation: moveBG 40s ease-in-out infinite alternate;
+  background-size:  300%;
+  animation: moveBG 40s ease-in-out infinite alternate; opacity 0.6;
   flex-direction: column;
   cursor: default;
 }
@@ -166,7 +167,7 @@ footer a {
 </style>
 </head>
 <body>
-<div id="loader"><span>Загрузка...</span></div>
+<div id="loader"><span id="loading-text">Загрузка</span></div>
 <div id="start-screen">
   <h1 onclick="startSite()">ТЫК</h1>
 </div>
@@ -185,9 +186,7 @@ footer a {
     <a href="https://vk.com/weuory" target="_blank"><i class="fab fa-vk"></i> VK</a>
   </div>
   <div id="pause-button" onclick="togglePlayback()">×</div>
-  <footer>
-    © 2025 Все права защищены — Создатель 🖤 <a href="https://vk.com/sergeileonov" target="_blank">sergeileonov</a>
-  </footer>
+  <footer>© 2025 - 2026 Все права защищены — Контент защищён авторским правом.<br>Создатель 🖤 <a href="https://vk.com/sergeileonov" target="_blank">@sergeileonov</a></footer>
 </div>
 <script>
 let isPlaying = false;
@@ -235,5 +234,15 @@ function togglePlayback() {
   }
 }
 </script>
+
+<script>
+const loadingText = document.getElementById('loading-text');
+let dots = 0;
+const interval = setInterval(() => {
+  dots = (dots + 1) % 4;
+  loadingText.textContent = 'Загрузка' + '.'.repeat(dots);
+}, 500);
+</script>
 </body>
+
 </html>
