@@ -15,6 +15,7 @@ html, body {
   overflow: hidden;
   user-select: none;
 }
+
 /* Загрузка */
 #loader {
   position: fixed;
@@ -35,6 +36,8 @@ html, body {
   0% { opacity: 0.8; text-shadow: 0 0 6px white; }
   100% { opacity: 1; text-shadow: 0 0 14px white, 0 0 26px #ccc; }
 }
+
+/* Стартовый экран */
 #start-screen {
   opacity: 0.6;
   display: none;
@@ -42,7 +45,7 @@ html, body {
   align-items: center;
   height: 100%;
   background: url('Picsart_25-07-06_12-49-05-878.jpg') center center no-repeat;
-  background-size:  300%;
+  background-size: 300%;
   animation: moveBG 40s ease-in-out infinite alternate;
   flex-direction: column;
   cursor: default;
@@ -57,6 +60,8 @@ html, body {
   text-shadow: 0 0 10px white, 0 0 30px #ccc;
   animation: flicker 1.5s infinite alternate;
 }
+
+/* Видео и блок */
 #video-section {
   display: none;
   flex-direction: column;
@@ -75,6 +80,8 @@ video#mainVideo {
   z-index: 0;
   background: black;
 }
+
+/* Аватар */
 #avatar {
   width: 120px;
   height: 120px;
@@ -91,10 +98,12 @@ video#mainVideo {
   object-fit: cover;
   border-radius: 50%;
 }
+
+/* Ник */
 #username {
   font-size: 36px;
-  color: white;
-  text-shadow: 0 0 10px white, 0 0 20px #ccc;
+  color: #B497FF;
+  text-shadow: 0 0 10px #B497FF, 0 0 20px #B497FF;
   animation: float 3s ease-in-out infinite alternate;
   margin-bottom: 16px;
   font-weight: bold;
@@ -105,6 +114,8 @@ video#mainVideo {
   0%   { transform: translateY(0); }
   100% { transform: translateY(10px); }
 }
+
+/* Соцсети */
 .social-box {
   margin-top: 40px;
   margin-bottom: 30px;
@@ -122,26 +133,28 @@ video#mainVideo {
 }
 .social-box a {
   font-size: 18px;
-  color: white;
+  color: #B497FF;
   text-decoration: none;
   padding: 6px 14px;
   border-radius: 8px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
   transition: background 0.3s ease;
 }
 .social-box a i {
   margin-right: 8px;
 }
 .social-box a:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
 }
+
+/* Кнопка паузы */
 #pause-button {
   font-size: 38px;
-  color: white;
-  text-shadow: 0 0 10px white, 0 0 20px #ccc;
+  color: black;
+  text-shadow: none;
   cursor: pointer;
   margin-bottom: 24px;
-  animation: flicker 1.5s infinite alternate;
+  animation: none;
   z-index: 2;
   user-select: none;
   text-align: center;
@@ -149,15 +162,17 @@ video#mainVideo {
 #pause-button:focus {
   outline: none;
 }
+
+/* Футер */
 footer {
   position: absolute;
   bottom: 20px;
   width: 100%;
   text-align: center;
   font-size: 14px;
-  color: white;
+  color: black;
   font-weight: bold;
-  text-shadow: 0 0 8px white, 0 0 14px #ccc;
+  text-shadow: none;
   z-index: 1;
 }
 footer a {
@@ -168,9 +183,11 @@ footer a {
 </head>
 <body>
 <div id="loader"><span id="loading-text">Загрузка</span></div>
+
 <div id="start-screen">
   <h1 onclick="startSite()">ТЫК</h1>
 </div>
+
 <div id="video-section">
   <video autoplay playsinline id="mainVideo">
     <source src="lv_0_20250706151148.mp4" type="video/mp4">
@@ -188,6 +205,7 @@ footer a {
   <div id="pause-button" onclick="togglePlayback()">×</div>
   <footer>© 2025 - 2026 Все права защищены — Контент защищён авторским правом.<br>Создатель 🖤 <a href="https://vk.com/sergeileonov" target="_blank">@jresuya</a></footer>
 </div>
+
 <script>
 let isPlaying = false;
 
@@ -233,9 +251,7 @@ function togglePlayback() {
     pauseBtn.textContent = '>';
   }
 }
-</script>
 
-<script>
 const loadingText = document.getElementById('loading-text');
 let dots = 0;
 const interval = setInterval(() => {
